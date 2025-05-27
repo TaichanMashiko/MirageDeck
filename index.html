@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>透視戦略カードゲーム (仮)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="game-container">
+        <!-- 相手プレイヤーエリア -->
+        <div id="opponent-player-area" class="player-area">
+            <div class="player-info">
+                <span id="opponent-score">相手スコア: 0</span>
+                <div id="opponent-support-card-slot" class="support-card-slot" title="相手のサポートカード">S</div>
+            </div>
+            <div id="opponent-hand" class="hand-area">
+                <!-- 相手の手札は枚数だけ表示するか、裏向きカードを並べる -->
+                <div class="card-placeholder"></div>
+                <div class="card-placeholder"></div>
+                <div class="card-placeholder"></div>
+                <div class="card-placeholder"></div>
+                <div class="card-placeholder"></div>
+            </div>
+            <div class="deck-discard-area">
+                <div id="opponent-deck" class="deck" title="相手の山札">山</div>
+                <div id="opponent-discard" class="discard-pile" title="相手の捨て札">捨</div>
+            </div>
+        </div>
+
+        <!-- 中央の場エリア -->
+        <div id="field-area">
+            <div class="field-row" id="field-row-top">
+                <div class="field-slot" id="opponent-field-top"></div>
+                <div class="field-label">上</div>
+                <div class="field-slot" id="player-field-top"></div>
+            </div>
+            <div class="field-row" id="field-row-middle">
+                <div class="field-slot" id="opponent-field-middle"></div>
+                <div class="field-label">中</div>
+                <div class="field-slot" id="player-field-middle"></div>
+            </div>
+            <div class="field-row" id="field-row-bottom">
+                <div class="field-slot" id="opponent-field-bottom"></div>
+                <div class="field-label">下</div>
+                <div class="field-slot" id="player-field-bottom"></div>
+            </div>
+        </div>
+
+        <!-- 自分プレイヤーエリア -->
+        <div id="player-area" class="player-area">
+            <div class="deck-discard-area">
+                <div id="player-deck" class="deck" title="自分の山札">山</div>
+                <div id="player-discard" class="discard-pile" title="自分の捨て札">捨</div>
+            </div>
+            <div id="player-hand" class="hand-area">
+                <!-- JavaScriptで手札カードがここに追加される -->
+            </div>
+            <div class="player-info">
+                <span id="player-score">自分スコア: 0</span>
+                <div id="player-support-card-slot" class="support-card-slot" title="自分のサポートカード">S</div>
+                 <!-- サポートカード選択用のUIを後で追加 -->
+            </div>
+        </div>
+
+        <!-- 情報・操作エリア -->
+        <div id="info-action-area">
+            <div id="message-area">メッセージがここに表示されます</div>
+            <div id="action-buttons">
+                <!-- <button id="set-cards-button">カードをセット</button> -->
+                <!-- <button id="declare-open-button">オープン宣言</button> -->
+                <!-- ターン進行やフェイズによってボタンを動的に表示/非表示 -->
+            </div>
+            <div id="support-card-options-area">
+                <!-- サポートカードを選択するためのUI（例：ラジオボタンやドロップダウン） -->
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
