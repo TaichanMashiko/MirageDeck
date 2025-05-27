@@ -1,0 +1,212 @@
+/* 基本的なリセットとbodyのスタイル */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* 上寄せ */
+    min-height: 100vh;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 各主要エリア間の隙間 */
+    width: 90%;
+    max-width: 1000px; /* 最大幅 */
+    background-color: #e0e0e0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* プレイヤーエリア共通スタイル */
+.player-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #d0d0d0;
+    border-radius: 6px;
+}
+
+#opponent-player-area {
+    /* 上側のプレイヤーなので順序を逆にするなど工夫が必要な場合も */
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.hand-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 110px; /* カードの高さ + 余白 */
+    background-color: #c8c8c8;
+    padding: 5px;
+    border-radius: 4px;
+    flex-grow: 1; /* 手札エリアがスペースを占めるように */
+    margin: 0 10px;
+}
+
+.deck-discard-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.deck, .discard-pile, .support-card-slot {
+    width: 70px;
+    height: 100px;
+    border: 2px solid #555;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: #b0b0b0;
+    cursor: default; /* 通常は操作不可なので */
+}
+.support-card-slot {
+    background-color: #a0a0a0;
+    font-size: 2em;
+}
+
+.card-placeholder { /* 相手の手札の仮表示 */
+    width: 70px;
+    height: 100px;
+    background-color: #aaa;
+    border: 1px dashed #777;
+    border-radius: 5px;
+    margin: 0 2px;
+}
+
+/* 中央の場エリア */
+#field-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    background-color: #c0c0c0;
+    border-radius: 6px;
+}
+
+.field-row {
+    display: flex;
+    justify-content: space-around; /* 各要素を均等に配置 */
+    align-items: center;
+}
+
+.field-label {
+    font-weight: bold;
+    width: 50px; /* ラベルの幅 */
+    text-align: center;
+}
+
+.field-slot {
+    width: 80px; /* カードより少し大きめ */
+    height: 110px;
+    border: 2px dashed #888;
+    border-radius: 5px;
+    background-color: #b8b8b8;
+    display: flex; /* 中にカードを配置するため */
+    justify-content: center;
+    align-items: center;
+}
+
+/* 情報・操作エリア */
+#info-action-area {
+    padding: 10px;
+    background-color: #d0d0d0;
+    border-radius: 6px;
+    text-align: center;
+}
+
+#message-area {
+    min-height: 30px;
+    padding: 5px;
+    background-color: #e8e8e8;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+#action-buttons button {
+    padding: 8px 15px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #77aaff;
+    color: white;
+    cursor: pointer;
+}
+#action-buttons button:hover {
+    background-color: #5588dd;
+}
+
+
+/* --- カードの基本的なスタイル（JavaScriptで生成される要素用） --- */
+.card {
+    width: 70px;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 2px; /* 手札内で隣接するカードとの間隔 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 数字を上下に配置する場合など */
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box; /* paddingとborderをwidth/heightに含める */
+    font-weight: bold;
+    cursor: pointer; /* 手札のカードは選択できるので */
+    background-color: white; /* デフォルトの背景 */
+    user-select: none; /* ドラッグでテキスト選択されるのを防ぐ */
+}
+
+.card .number {
+    font-size: 1.8em;
+}
+.card .color-indicator { /* 色を示す小さなマークや文字など */
+    font-size: 0.8em;
+    /* 例: カードの下部に色名を表示 */
+}
+
+/* カードの色 (JavaScriptでクラスを付与) */
+.card.red { background-color: #ffdddd; border-color: #cc биологи;} /* 例: 淡い赤 */
+.card.blue { background-color: #ddddff; border-color: #aaaacc;}/* 例: 淡い青 */
+.card.green { background-color: #ddffdd; border-color: #aaccaa;}/* 例: 淡い緑 */
+
+/* カードの透ける表現 (仮、JavaScriptでクラスを付与) */
+.card.transparent-color .number {
+    visibility: hidden;
+}
+.card.transparent-number .color-name-display { /* 色名表示用の要素を想定 */
+    visibility: hidden;
+}
+.card.transparent-number { /* 数字のみ透ける場合、カード自体の色も隠す */
+    background-color: #e0e0e0 !important; /* 色クラスより優先 */
+}
+.card.transparent-both .number,
+.card.transparent-both .color-name-display {
+    visibility: hidden;
+}
+.card.transparent-both {
+    background-color: #e0e0e0 !important;
+}
+
+/* 特定のエリアのカードスタイル調整（もし必要なら） */
+#player-hand .card {
+    /* 手札のカード特有のスタイル */
+}
+.field-slot .card {
+    margin: 0; /* 場に置かれたカードはマージンなし */
+    cursor: default;
+}
